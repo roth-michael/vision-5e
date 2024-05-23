@@ -199,7 +199,7 @@ VisionSource.prototype._initialize = ((_initialize) => function (data) {
         const token = this.object.document;
         data.blinded ||= token.hasStatusEffect(CONFIG.specialStatusEffects.BURROW)
             || token.hasStatusEffect(CONFIG.specialStatusEffects.PETRIFIED)
-            || token.hasStatusEffect(CONFIG.specialStatusEffects.UNCONSCIOUS)
+            || (token.hasStatusEffect(CONFIG.specialStatusEffects.UNCONSCIOUS) && !game.settings.get("vision-5e", "unconsciousRetainsVision"))
             || token.hasStatusEffect(CONFIG.specialStatusEffects.SLEEP);
     }
 

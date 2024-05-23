@@ -26,7 +26,7 @@ export class DetectionModeGhostlyGaze extends DetectionModeDarkvision {
         const source = visionSource.object;
         return !(source instanceof Token && (source.document.hasStatusEffect(CONFIG.specialStatusEffects.BLIND)
             || source.document.hasStatusEffect(CONFIG.specialStatusEffects.PETRIFIED)
-            || source.document.hasStatusEffect(CONFIG.specialStatusEffects.UNCONSCIOUS)
+            || (source.document.hasStatusEffect(CONFIG.specialStatusEffects.UNCONSCIOUS) && !game.settings.get("vision-5e", "unconsciousRetainsVision"))
             || source.document.hasStatusEffect(CONFIG.specialStatusEffects.SLEEP)))
             && !(target instanceof Token && (target.document.hasStatusEffect(CONFIG.specialStatusEffects.INVISIBLE)
                 || target.document.hasStatusEffect(CONFIG.specialStatusEffects.ETHEREAL) && !isGhost(target.actor)

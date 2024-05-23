@@ -36,7 +36,7 @@ export class DetectionModeBlindsense extends DetectionMode {
         const source = visionSource.object;
         if (source instanceof Token && (source.document.hasStatusEffect(CONFIG.specialStatusEffects.DEAF)
             || source.document.hasStatusEffect(CONFIG.specialStatusEffects.PETRIFIED)
-            || source.document.hasStatusEffect(CONFIG.specialStatusEffects.UNCONSCIOUS)
+            || (source.document.hasStatusEffect(CONFIG.specialStatusEffects.UNCONSCIOUS) && !game.settings.get("vision-5e", "unconsciousRetainsVision"))
             || source.document.hasStatusEffect(CONFIG.specialStatusEffects.SLEEP)
             || source.document.hasStatusEffect(CONFIG.specialStatusEffects.BURROW))) return false;
         if (target.document.hasStatusEffect(CONFIG.specialStatusEffects.BURROW)

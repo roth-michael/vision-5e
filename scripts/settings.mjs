@@ -35,6 +35,20 @@ Hooks.once("init", () => {
         }
     );
 
+    game.settings.register(
+        "vision-5e",
+        "unconsciousRetainsVision",
+        {
+            name: "Unconscious Retains Vision",
+            hint: "Unconscious creatures retain their vision",
+            scope: "world",
+            config: true,
+            requiresReload: false,
+            type: Boolean,
+            default: false
+        }
+    );
+
     const defaultHearingRange = game.settings.get("vision-5e", "defaultHearingRange");
 
     if (!Number.isNaN(Number(defaultHearingRange))) {
